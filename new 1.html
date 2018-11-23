@@ -1,0 +1,112 @@
+<html>
+<head>
+	<title>Авто</title>
+	<link href="style.css" rel="stylesheet" type="text/css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
+<head>
+<body>
+<div class="knopku" align="center">
+<a href="https://www.google.com"><img src="knopka2.png" width="200" height="50" align="left"></a>
+<a href="https://www.google.com"><img src="knopka2.png" width="200" height="50" align="left"></a>
+<a href="https://www.google.com"><img src="domik.png" width="84" height="50" align="center"></a>
+<a href="https://www.google.com"><img src="knopka2.png" width="200" height="50" align="right"></a>
+<a href="test.html"><img src="knopka2.png" width="200" height="50" align="right"></a>
+</div>
+</div>
+<div class="maindiv">
+<script>
+
+$('document').ready(function(){
+$(document).ready(function () {
+	var start = 0; //змінна зберігає етап проходження тесту
+	var questionArray = []; //масив запитань
+	var answerArray = []; //масив варіантів відповіді
+	var correctAnswerArray = []; //масив правильних відповідей ID
+	var correctAnswerCount; //к-ть правильних відповідей користувача
+	var userAnswerArray = []; //масив відповідей які зазначив користувач
+	var chech = []; //масив класів для відображення правильної/неправильної відповіді
+	var curTest; //змінна зберігає № поточного запитання
+	var chechAnswer = ''; //змінна яка буде отримувати назву класу для відображення правильності вибору користувача
+	$("#startTests").on('click', function(){ //виконати дії при натисканні на кнопку
+		if(start == 0){ //виконати дії при натисканні на кнопку із текстом >> Розпочати тест <<
+			correctAnswerCount = 0;
+			chech = ['good', 'bad']; //назви класів для відображення правильно/неправильно зазначеної відповіді
+			questionArray = ['В якому році Колумб відкрив Америку?','Коли народився Тарас Шевченко', 'В якому році було створено JavaScript'];
+			answerArray = [['1490','1491','1492','1493'], ['9 березня 1814','10 березня 1814','27 березня 1856','27 серпня 1856'], ['1994','1995','1996','вчора','що ще за JavaScript?']]
+			correctAnswerArray = [2, 0, 1]			
+			for(var i = 0; i < questionArray.length; i++){
+				$("#testNum").append('<span id="' + i + '">' + (i + 1) + '</span>'); //додаємо перелік ID запитань для навігації
+				userAnswerArray[i] = ' '; //створюємо пустий масив відповідей користувача
+			}
+			$('#restResult')[0].innerHTML = ""; //очищаємо поле результат, потрібне якщо користувач повторно проходить тест
+			pasteQuestion(0); //передаємо ID тесту на функцію яка виводить тест та його варіанти відповіді
+			$("#startTests").attr('value', ">> Завершити тест <<"); //змінюємо текст кнопки
+			start = 1; //етап тесту 1, користувач проходить тест
+		} else if(start == 1){ //виконати дії при натисканні на кнопку із текстом >> Завершити тест <<
+			$('#testNum').empty(); //очистити навігацію по тестах
+			$('#currentTestView').empty(); //очистити поле із запитанням
+			$('#startTests').attr('value', ">> Розпочати тест <<"); //змінити назву кнопки на >> Розпочати тест <<
+			start = 0; //етап тесту 0, тест ще не розпочато
+			var calcScore = (correctAnswerCount / questionArray.length) * 100; //розраховуємо % правильних відповідей користувача
+			$('#restResult')[0].innerHTML = " Ви набрали " + calcScore.toFixed(2) + " балів з 100!"; //виводимо результат на екран
+		}
+	});
+	$("#testNum").on('click', 'span', function(){ //виконати наступні дії при натисканні на елементі span в навігації запитань
+		$('#currentTestView').empty(); //очистити поле із запитанням та його варіантами відповіді
+		var clearClass = document.getElementsByClassName('current'); //отримати колекцію елементів із класом current = відображення користувачу поточного/активного запитання (окрім вже пройдених)
+		for(var i = 0; i < clearClass.length; i++){ //очищаємо всі класи із назвою current
+			clearClass[i].className = " ";
+		}
+		pasteQuestion(this.id); //відобразити запитання відповідно до натиснутого № з панелі навігації
+	});
+	$("#currentTestView").on('click', 'label', function(){ //дії які потрібно виконати при натисканні на будь яку із відповідей до запитання
+		if(userAnswerArray[curTest] == ' '){ //виконати дії якщо користувач ще не надавав відповіді на дане запитання
+			if(this.id == correctAnswerArray[curTest]){ // перевірка на те чи обрано правильну відповідь, якщо так тоді:
+				chechAnswer = chech[0]; //присвоїти значення good
+				correctAnswerCount += 1; //збільшити кількість правильних відповідей користувача на 1
+			}
+			else{ //syfrit
+				chechAnswer = chech[1]; //присвоїти значення bad
+			}
+			$(this).attr('class', chechAnswer); //встановити відповідний клас для елемента по якому було натиснуто
+			$("#testNum span:eq(" + curTest + ")").attr('class', chechAnswer); //задати той же клас для відповідного елемента навігації
+			userAnswerArray[curTest] = this.id; //записуємо обрану відповідь у масив відповідей користувача
+			$('#currentTestView input').attr('disabled',true); //блокуємо вибір варіантів відповіді на поточному запитанні
+		}
+	});
+	function pasteQuestion(curQestion){ //функція відображення запитань та їх відповідей, отримує аргумент із запитанням яке необхідно відобразити
+		curTest = +curQestion; //присвоюємо значення поточного запитання (конвертуємо в число, для уникнення помилок, так як id передаються як текст)
+		$('#currentTestView').empty(); //очищаємо поле із запитанням
+		$("#currentTestView").append('<div><b>Запитання ' + (curTest + 1) + '.</b> ' + questionArray[curTest] + '</div>'); //додаємо обране запитання
+		if($("#testNum span:eq(" + curTest + ")").attr('class') == undefined || $("#testNum span:eq(" + curTest + ")").attr('class') == " "){ //перевірка на наявність класу в потрібного елемента навігації, якщо пусто, або немає:
+			$("#testNum span:eq(" + curTest + ")").attr('class', 'current'); //встановити елементу навігації клас із поточним завданням
+		}
+		for(var i = 0; i < answerArray[curTest].length; i++){ //перебираємо усі варіанти відповіді до запитання
+			chechAnswer = "";
+			if(userAnswerArray[curTest] == i.toString()){ //якщо у нас є відповідь користувача на дане запитання і вона = і-му елементу тоді:
+				if(userAnswerArray[curTest] == correctAnswerArray[curTest]){ //перевіряємо чи дана відповідь є правильною, якщо так:
+					chechAnswer = 'class = "' + chech[0] + '"'; //задаємо назву класу good
+				}
+				else{ //якщо ні
+					chechAnswer = 'class = "' + chech[1] + '"'; //задаємо назву класу bad
+				}
+				$('#currentTestView input').attr('disabled',true); //блокуємо вибір варіантів відповіді на поточному запитанні
+			}
+			$("#currentTestView").append('<label id = "' + i + '"' + chechAnswer + '><input type="radio" name="testAnswer">' + answerArray[curTest][i] + '</label>'); //виводимо варіант відповіді		
+		}
+	}
+});
+</script>
+<div id="testArea">
+	<div class="testName">Тестовий тест ☺</div><hr>
+	<div id="testNum"></div>
+	<div id="currentTestView"></div>
+	<div id="restResult"></div>
+	<input type="button" id="startTests" value=">> Розпочати тест <<">
+</div>
+</div>
+</body>
+</html>
+
+
+

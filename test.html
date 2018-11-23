@@ -1,0 +1,230 @@
+<html>
+<head>
+	<title>Авто</title>
+	<link href="style.css" rel="stylesheet" type="text/css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
+<head>
+<body>
+<div class="knopku" align="center">
+<a href="https://www.google.com"><img src="knopka2.png" width="200" height="50" align="left"></a>
+<a href="https://www.google.com"><img src="knopka2.png" width="200" height="50" align="left"></a>
+<a href="https://www.google.com"><img src="domik.png" width="84" height="50" align="center"></a>
+<a href="https://www.google.com"><img src="knopka2.png" width="200" height="50" align="right"></a>
+<a href="test.html"><img src="knopka2.png" width="200" height="50" align="right"></a>
+</div>
+</div>
+<div class="maindiv">
+<script>
+
+$('document').ready(function(){
+var kyzov = 0;
+var vukor = 0;
+var shvud = 0;
+var rozgin = 0;
+var suma = 0;
+
+
+
+$("#1zap").click(function(){
+	kyzov = 1 ;
+	$("#2zap input").attr("disabled",true);
+	$("#3zap input").attr("disabled",true);
+	$("#4zap input").attr("disabled",true);
+	
+});
+
+$("#2zap").click(function(){
+	kyzov = 2 ;
+	$("#1zap input").attr("disabled",true);
+	$("#3zap input").attr("disabled",true);
+	$("#4zap input").attr("disabled",true);
+});
+	
+$("#3zap").click(function(){
+	kyzov = 3 ;
+	$("#1zap input").attr("disabled",true);
+	$("#2zap input").attr("disabled",true);
+	$("#4zap input").attr("disabled",true);
+});	
+
+$("#4zap").click(function(){
+	kyzov = 4;
+	$("#1zap input").attr("disabled",true);
+	$("#2zap input").attr("disabled",true);
+	$("#3zap input").attr("disabled",true);
+});
+
+
+$("#5zap").click(function(){
+	vukor = 1 ;
+	$("#6zap input").attr("disabled",true);
+	$("#7zap input").attr("disabled",true);
+	$("#8zap input").attr("disabled",true);
+});
+
+$("#6zap").click(function(){
+	vukor = 2 ;
+	$("#5zap input").attr("disabled",true);
+	$("#7zap input").attr("disabled",true);
+	$("#8zap input").attr("disabled",true);
+});
+	
+$("#7zap").click(function(){
+	vukor = 3 ;
+	$("#5zap input").attr("disabled",true);
+	$("#6zap input").attr("disabled",true);
+	$("#8zap input").attr("disabled",true);
+});	
+
+$("#8zap").click(function(){
+	vukor = 4;
+	$("#5zap input").attr("disabled",true);
+	$("#6zap input").attr("disabled",true);
+	$("#7zap input").attr("disabled",true);
+});
+$("#9zap").click(function(){
+	shvud = 1 ;
+	$("#10zap input").attr("disabled",true);
+	$("#11zap input").attr("disabled",true);
+	$("#12zap input").attr("disabled",true);
+});
+
+$("#10zap").click(function(){
+	shvud = 2 ;
+	$("#9zap input").attr("disabled",true);
+	$("#11zap input").attr("disabled",true);
+	$("#12zap input").attr("disabled",true);
+});
+	
+$("#11zap").click(function(){
+	shvud = 3 ;
+	$("#9zap input").attr("disabled",true);
+	$("#10zap input").attr("disabled",true);
+	$("#12zap input").attr("disabled",true);
+});	
+
+$("#12zap").click(function(){
+	shvud = 4;
+	$("#9zap input").attr("disabled",true);
+	$("#10zap input").attr("disabled",true);
+	$("#11zap input").attr("disabled",true);
+});
+$("#13zap").click(function(){
+	rozgin = 1;
+	$("#14zap input").attr("disabled",true);
+	$("#15zap input").attr("disabled",true);
+	$("#16zap input").attr("disabled",true);
+	
+});
+
+$("#14zap").click(function(){
+	rozgin = 2 ;
+	$("#13zap input").attr("disabled",true);
+	$("#15zap input").attr("disabled",true);
+	$("#16zap input").attr("disabled",true);
+});
+	
+$("#15zap").click(function(){
+	rozgin = 3 ;
+	$("#13zap input").attr("disabled",true);
+	$("#14zap input").attr("disabled",true);
+	$("#16zap input").attr("disabled",true);
+});	
+
+$("#16zap").click(function(){
+
+	rozgin = 4;
+	
+	$("#13zap input").attr("disabled",true);
+	$("#14zap input").attr("disabled",true);
+	$("#15zap input").attr("disabled",true);
+	
+});
+
+$("#porovir1").click(function(){
+
+	suma = vukor + kyzov + shvud + rozgin;
+   if(suma == 11){
+    alert(" BMW M4 CS \n BMW M4 BMW \n M240i xDrive",);}
+   if(suma == 4){
+    alert("BMW 118i \nBMW 118d xDrive \nBMW 218i \nBMW 118i \nBMW 218d \nBMW 218d xDrive  \nBMW 318d ",);}
+   if(suma == 10){
+	alert("BMW 120i \n BMW \n BMW 118d \n BMW 120d \n BMW 120d xDrive \n BMW 120i \n BMW 118d \n BMW 120d  ",);}
+	if(suma == 8){
+	alert("730i \n 740i \n 750i \n 750i xDrive \n740e iPerfomance \n 730d \n730d xDrive \n 740d xDrive \n 750d xDrive \n 730li \n740li \n740li xDrive \n750li \n750li xDrive \n750le iPerfomance \n740le xDrive \n730ld \n730ld xDrive \n740ld xDrive \n750ld xDrive",);}
+   if(suma == 8){
+	alert("840d xDrive ",);}
+   
+   
+/*if(suma == 11){
+ $("#porovir1").attr("disabled", false
+ const #porovir1 = {
+	color: gray;
+	backgroundColor:gray;
+ 
+ }
+ )};
+if(suma ==){
+ $("#provir2").attr()}*/
+
+
+});
+
+});
+
+
+
+
+
+
+
+
+</script>
+<h2>Виберіть тип кузова</h2> 
+<div id="1zap">
+<input type="radio" value="0" > Купе </input>
+</div><div id="2zap" >
+<input type="radio"value="1"> Седан </input>
+</div><div id="3zap">
+<input type="radio" value="2" > Венедорожник/кросовер </input>
+</div><div id="4zap">
+<input type="radio" value="3">  Кабріолет </input>
+</div>
+
+<h2>Для чого вам потрібна машина</h2> 
+<div id="5zap">
+<input type="radio"  > Їздите по справах </input>
+</div><div id="6zap" >
+<input type="radio"> Їздите за місто </input>
+</div>
+
+<div id="8zap">
+<input type="radio" >  "Розсікати" по місту" </input>
+</div>
+<h2>Максимальна швидкість</h2> 
+<div id="9zap">
+<input type="radio" value="0" > Від 195км/год до 210км/год </input>
+</div><div id="10zap" >
+<input type="radio"value="1"> 	Від 210 до 230км/год</input>
+</div><div id="11zap">
+<input type="radio" value="2" > Від 230 до 250км/год </input>
+</div><div id="12zap">
+<input type="radio" value="3">  Від 250км/год </input>
+</div>
+<h2>Розгін до 100км/год</h2>
+<div id="13zap">
+<input type="radio" value="0" > Від 3.3с. до 4.4с. </input>
+</div><div id="14zap" >
+<input type="radio"value="1"> Від 4.4с. до 6с. </input>
+</div><div id="15zap">
+<input type="radio" value="2" > Від 6с. до 9с. </input>
+</div><div id="16zap">
+<input type="radio" value="3">  ід 9с. до 12с. </input>
+</div>
+<button type="sabmit" id="porovir1" value="1">Натисни на мене</button>
+</div>
+</body>
+</html>
+
+
+

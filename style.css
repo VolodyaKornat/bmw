@@ -1,0 +1,52 @@
+﻿body
+{
+	background: #333;
+	background: linear-gradient(to top, #808080, #000000);
+	padding: 10px;
+	border: 1ps solid #333;
+	color: #646464;
+	
+}
+.knopku
+{
+	background-color: linear-gradient(to top, #808080, #cccccc);
+	margin: 0 auto;
+	padding: 0;
+	width: 900px;
+	color: black;
+}
+.maindiv
+{
+	background: #808080;
+	margin: 0 auto;
+	padding: 0;
+	width: 900px;
+	color: black;
+	
+}.knopku img
+{
+	margin: 0;
+}
+.marka
+{
+	margin: 5;
+	padding: 5;
+}
+.maindiv h1
+{
+	color:;
+}
+td
+{
+	color: black;
+	font-size: 30px;
+}
+th
+{
+	color: black;
+	font-size: 30px;
+}
+.maindiv a
+{
+	color: black;
+}
